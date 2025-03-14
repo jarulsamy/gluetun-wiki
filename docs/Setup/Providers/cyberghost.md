@@ -1,19 +1,19 @@
-# Torguard
+# Cyberghost
 
 ## TLDR
 
-💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard).
-
-For OpenVPN:
+1. [Setup your client key](../advanced/openvpn-client-key.md)
+1. [Setup your client certificate](../advanced/openvpn-client-certificate.md)
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER=torguard \
+-e VPN_SERVICE_PROVIDER=cyberghost \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
+-v /yourpath:/gluetun \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -23,24 +23,25 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=torguard
+      - VPN_SERVICE_PROVIDER=cyberghost
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
       - SERVER_COUNTRIES=Netherlands
+    volumes:
+      - ./gluetun:/gluetun
 ```
 
 💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard).
 
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=torguard`
+- `VPN_SERVICE_PROVIDER=cyberghost`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 
 ## Optional environment variables
 
 - `SERVER_COUNTRIES`: Comma separated list of countries
-- `SERVER_CITIES`: Comma separated list of cities
 - `SERVER_HOSTNAMES`: Comma separated list of server hostnames
 
 ## Servers

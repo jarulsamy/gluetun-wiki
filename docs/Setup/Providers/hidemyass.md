@@ -1,15 +1,15 @@
-# Perfect Privacy
+# HideMyAss
 
 ## TLDR
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER="perfect privacy" \
+-e VPN_SERVICE_PROVIDER=hidemyass \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
--e SERVER_CITIES=Amsterdam qmcgaw/gluetun
+-e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -19,27 +19,24 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=perfect privacy
+      - VPN_SERVICE_PROVIDER=hidemyass
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
-      - SERVER_CITIES=Amsterdam
+      - SERVER_COUNTRIES=Netherlands
 ```
-
-⚠️ If you want to use DNS over TLS, disable the **TrackStop Filter for fraud** (see [this issue](https://github.com/qdm12/gluetun/issues/1479))
 
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=perfect privacy`
+- `VPN_SERVICE_PROVIDER=hidemyass`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 
 ## Optional environment variables
 
+- `SERVER_COUNTRIES`: Comma separated list of countries
+- `SERVER_REGIONS`: Comma separated list of regions
 - `SERVER_CITIES`: Comma separated list of cities
-
-## VPN server port forwarding
-
-Set `VPN_PORT_FORWARDING=on` and the 3 ports forwarded will be logged out as well as available via the http control server.
+- `SERVER_HOSTNAMES`: Comma separated list of server hostnames
 
 ## Servers
 

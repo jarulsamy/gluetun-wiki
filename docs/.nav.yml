@@ -1,0 +1,11 @@
+nav:
+  - index.md
+  - Setup:
+    - Getting started: "Setup/getting_started.md"
+    - Prerequisites: "Setup/Prerequisites/"
+    - Providers: "Setup/Providers/"
+    - Options: "Setup/Options/"
+    - Advanced: "Setup/Advanced/"
+  - Common Errors: "errors/"
+  - FAQ: "faq/"
+  - Contributing: "contributing/"

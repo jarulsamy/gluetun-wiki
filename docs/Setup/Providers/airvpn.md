@@ -14,7 +14,7 @@ docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
   qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -32,7 +32,13 @@ services:
       - SERVER_COUNTRIES=Netherlands
 ```
 
-⚠️ `WIREGUARD_ADDRESSES` may only contain an IPv6 address (such as `ff:ff.../128`) if your container setup supports IPv6. To do so, see [the IPv6 document](https://github.com/qdm12/gluetun-wiki/blob/main/setup/advanced/ipv6.md). Otherwise, remove the IPv6 address from `WIREGUARD_ADDRESSES`.
+
+!!! warning "Warning"
+    ️ `WIREGUARD_ADDRESSES` may only contain an IPv6 address (such as
+      `ff:ff.../128`) if your container setup supports IPv6. To do so, see [the
+      IPv6
+      document](https://github.com/qdm12/gluetun-wiki/blob/main/setup/advanced/ipv6.md).
+      Otherwise, remove the IPv6 address from `WIREGUARD_ADDRESSES`.
 
 ### OpenVPN
 
@@ -47,7 +53,7 @@ docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
   qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:

@@ -1,23 +1,19 @@
-# VPN Unlimited
+# VPN Secure
 
 ## TLDR
 
-💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard)
-
-For OpenVPN:
-
-1. [Setup your client key](../advanced/openvpn-client-key.md)
+1. [Setup your client encrypted key](../advanced/openvpn-client-encrypted-key.md)
 1. [Setup your client certificate](../advanced/openvpn-client-certificate.md)
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER="vpn unlimited" \
+-e VPN_SERVICE_PROVIDER=vpnsecure \
 -v /yourpath/gluetun:/gluetun \
--e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
+-e OPENVPN_KEY_PASSPHRASE=abc \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -27,26 +23,26 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=vpn unlimited
-      - OPENVPN_USER=abc
-      - OPENVPN_PASSWORD=abc
+      - VPN_SERVICE_PROVIDER=vpnsecure
+      - OPENVPN_KEY_PASSPHRASE=abc
       - SERVER_COUNTRIES=Netherlands
     volumes:
+      # gluetun directory must contain the certificate
+      # as client.crt and the encrypted key as openvpn_encrypted_key
       - ./gluetun:/gluetun
 ```
 
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=vpn unlimited`
-- `OPENVPN_USER`
-- `OPENVPN_PASSWORD`
+- `VPN_SERVICE_PROVIDER=vpnsecure`
+- `OPENVPN_KEY_PASSPHRASE` is your account password
 
 ## Optional environment variables
 
-- `SERVER_COUNTRIES`: Comma separated list of countries
 - `SERVER_REGIONS`: Comma separated list of regions
 - `SERVER_CITIES`: Comma separated list of cities
 - `SERVER_HOSTNAMES`: Comma separated list of server hostnames
+- `PREMIUM_ONLY`: `yes` or `no`
 
 ## Servers
 

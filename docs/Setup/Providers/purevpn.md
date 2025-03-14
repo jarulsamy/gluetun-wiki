@@ -1,15 +1,15 @@
-# ExpressVPN
+# PureVPN
 
 ## TLDR
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER=expressvpn \
+-e VPN_SERVICE_PROVIDER=purevpn \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -19,22 +19,25 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=expressvpn
+      - VPN_SERVICE_PROVIDER=purevpn
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
       - SERVER_COUNTRIES=Netherlands
 ```
 
+💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard).
+
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=expressvpn`
+- `VPN_SERVICE_PROVIDER=purevpn`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 
 ## Optional environment variables
 
 - `SERVER_COUNTRIES`: Comma separated list of countries
-- `SERVER_CITIES` : Comma separated list of cities
+- `SERVER_REGIONS`: Comma separated list of regions
+- `SERVER_CITIES`: Comma separated list of cities
 - `SERVER_HOSTNAMES`: Comma separated list of server hostnames
 
 ## Servers

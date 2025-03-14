@@ -1,15 +1,15 @@
-# PureVPN
+# Privado
 
 ## TLDR
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER=purevpn \
+-e VPN_SERVICE_PROVIDER=privado \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -19,17 +19,15 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=purevpn
+      - VPN_SERVICE_PROVIDER=privado
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
       - SERVER_COUNTRIES=Netherlands
 ```
 
-💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard).
-
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=purevpn`
+- `VPN_SERVICE_PROVIDER=privado`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 

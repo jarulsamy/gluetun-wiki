@@ -4,7 +4,10 @@
 
 ### OpenVPN
 
-💁 See the [Openvpn configuration file page](../openvpn-configuration-file.md) for information on how to set this up.
+!!! info "Info"
+
+    See the [Openvpn configuration file page](../openvpn-configuration-file.md) for
+    information on how to set this up.
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN \
@@ -14,7 +17,7 @@ docker run -it --rm --cap-add=NET_ADMIN \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -45,7 +48,7 @@ docker run -it --rm --cap-add=NET_ADMIN \
 qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -65,7 +68,9 @@ services:
       - WIREGUARD_ADDRESSES=10.64.222.21/32
 ```
 
-💁 You can also bind mount a wireguard configuration file (ini format) to `/gluetun/wireguard/wg0.conf`.
+!!! info "Info"
+    💁 You can also bind mount a wireguard configuration file (ini format) to
+    `/gluetun/wireguard/wg0.conf`.
 
 ## Required environment variables
 

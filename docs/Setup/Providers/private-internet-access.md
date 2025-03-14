@@ -10,7 +10,7 @@ docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
 -e SERVER_REGIONS=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:

@@ -25,7 +25,7 @@ docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
 
 [▶️ obtain your Wireguard private key](#obtain-your-wireguard-private-key)
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:

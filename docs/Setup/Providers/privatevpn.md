@@ -1,18 +1,19 @@
-# SlickVPN
+# PrivateVPN
 
 ## TLDR
 
-1. [Setup your client encrypted key](../advanced/openvpn-client-encrypted-key.md)
-1. [Setup your client certificate](../advanced/openvpn-client-certificate.md)
+💁 To use with Wireguard, see [the custom provider Wireguard section](custom.md#wireguard).
+
+For OpenVPN:
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER=slickvpn \
+-e VPN_SERVICE_PROVIDER=privatevpn \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -22,7 +23,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=slickvpn
+      - VPN_SERVICE_PROVIDER=privatevpn
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
       - SERVER_COUNTRIES=Netherlands
@@ -30,16 +31,20 @@ services:
 
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=slickvpn`
+- `VPN_SERVICE_PROVIDER=privatevpn`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 
 ## Optional environment variables
 
-- `SERVER_REGIONS`: Comma separated list of regions
 - `SERVER_COUNTRIES`: Comma separated list of countries
 - `SERVER_CITIES`: Comma separated list of cities
 - `SERVER_HOSTNAMES`: Comma separated list of server hostnames
+- `OPENVPN_ENDPOINT_PORT`: Custom OpenVPN server endpoint port to use
+
+## VPN server port forwarding
+
+Set `VPN_PORT_FORWARDING=on` and the port forwarded will be logged out as well as available via the http control server.
 
 ## Servers
 

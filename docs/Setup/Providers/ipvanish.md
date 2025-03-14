@@ -1,15 +1,15 @@
-# HideMyAss
+# IPVanish
 
 ## TLDR
 
 ```sh
 docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
--e VPN_SERVICE_PROVIDER=hidemyass \
+-e VPN_SERVICE_PROVIDER=ipvanish \
 -e OPENVPN_USER=abc -e OPENVPN_PASSWORD=abc \
 -e SERVER_COUNTRIES=Netherlands qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -19,7 +19,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      - VPN_SERVICE_PROVIDER=hidemyass
+      - VPN_SERVICE_PROVIDER=ipvanish
       - OPENVPN_USER=abc
       - OPENVPN_PASSWORD=abc
       - SERVER_COUNTRIES=Netherlands
@@ -27,15 +27,14 @@ services:
 
 ## Required environment variables
 
-- `VPN_SERVICE_PROVIDER=hidemyass`
+- `VPN_SERVICE_PROVIDER=ipvanish`
 - `OPENVPN_USER`
 - `OPENVPN_PASSWORD`
 
 ## Optional environment variables
 
 - `SERVER_COUNTRIES`: Comma separated list of countries
-- `SERVER_REGIONS`: Comma separated list of regions
-- `SERVER_CITIES`: Comma separated list of cities
+- `SERVER_CITIES`: Comma separated list of countries
 - `SERVER_HOSTNAMES`: Comma separated list of server hostnames
 
 ## Servers

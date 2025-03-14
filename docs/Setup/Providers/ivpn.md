@@ -20,7 +20,7 @@ docker run -it --rm --cap-add=NET_ADMIN --device /dev/net/tun \
 -e SERVER_CITIES=amsterdam qmcgaw/gluetun
 ```
 
-```yml
+```yaml
 version: "3"
 services:
   gluetun:
@@ -70,18 +70,17 @@ If you want to tunnel IPv6:
     ```sh
     lsmod | grep ipv6
     ```
-
     Should show something.
-1. Enable IPv6 in Docker for this container:
+
+2. Enable IPv6 in Docker for this container:
     - For a Docker run command, add the flag `--sysctl net.ipv6.conf.all.disable_ipv6=0` (or `--sysctl net.ipv6.conf.all.disable=0` on some systems)
     - For docker-compose.yml files, add this to your `gluetun` config block:
+      ```yaml
+      sysctls:
+        - net.ipv6.conf.all.disable_ipv6=0
+      ```
 
-        ```yml
-            sysctls:
-              - net.ipv6.conf.all.disable_ipv6=0
-        ```
-
-1. Start the container
+3. Start the container
 
 ## Servers
 
