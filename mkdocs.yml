@@ -1,4 +1,5 @@
 site_name: Gluetun Wiki
+site_url: https://jarulsamy.github.io/gluetun-wiki/
 theme:
   name: material
   features:
